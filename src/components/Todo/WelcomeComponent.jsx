@@ -1,24 +1,22 @@
-import { Link } from "react-router-dom"
+import {useParams, Link } from "react-router-dom"
 import { useState } from 'react'
 import { useAuth } from "./Security/AuthContext"
-//import { retrieveHelloBean, retrieveHelloWorld, retrieveHelloWorldVariable } from "./API/HelloWorld"
+import {  retrieveHelloWorld } from "./API/HelloWorld"
 
 
 export default function WelcomeComponent() {
     const authContext = useAuth()
     const username = authContext.username
-    //const { username } = useParams()
-    const [message] = useState(null)
+    const [message, setMessage] = useState(null)
 
-    // function callHelloWorld() {
-    //     console.log('called')
+     function callHelloWorld() {
+         console.log('called')
     //     //axios
-    //     retrieveHelloWorld()
-    //         .then((response) => successResponse(response.data))
-    //         .catch((error) => errorResponse(error))
-    //         .finally(() => console.log('CleanUp'))
-
-    // }
+         retrieveHelloWorld()
+           .then((response) => successResponse(response.data))
+            .catch((error) => errorResponse(error))
+            .finally(() => console.log('CleanUp'))
+         }
     // function callHelloBean() {
     //     console.log('bean called')
     //     //axios
@@ -26,9 +24,9 @@ export default function WelcomeComponent() {
     //         .then((response) => successResponse(response.data.message))
     //         .catch((error) => errorResponse(error))
     //         .finally(() => console.log('CleanUp'))
-
     // }
-    // function callHelloWorldVariable() {
+
+    //  function callHelloWorldVariable() {
     //     console.log('path variable called')
     //     retrieveHelloWorldVariable('Demo')
     //         .then((response) => successResponse(response.data.message))
@@ -36,13 +34,14 @@ export default function WelcomeComponent() {
     //         .finally(() => console.log('CleanUp'))
     // }
 
-    // function successResponse(response) {
+    function successResponse(response) {
     //     console.log(response)
-    //     setMessage(response)
-    // }
-    // function errorResponse(error) {
-    //     console.log(error)
-    // }
+        setMessage(response.data.message)
+     }
+    
+     function errorResponse(error) {
+      console.log(error)
+     }
     return (
         <div className="WelcomeComponent">
             <h1> Welcome {username}</h1>

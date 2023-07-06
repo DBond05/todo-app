@@ -19,7 +19,7 @@ export default function TodoComponent() {
     )
 
     function retrieveTodos() {
-        if (id != 0) {
+        if (id != -1) {
             retrieveTodoApi(username, id)
                 .then(response => {
                     setDescription(response.data.description)
@@ -40,18 +40,16 @@ export default function TodoComponent() {
         }
 
         console.log(todo)
-        if (id == 0) {
+        if (id == -1) {
 
             createTodoApi(username, todo)
-                .then((response) => {
-                    console.log(response)
+                .then(response => {
                     navigate('/todos')
                 })
                 .catch(error => console.log(error))
         } else {
             updateTodoApi(username, id, todo)
-                .then((response) => {
-                    console.log(response)
+                .then(response => {
                     navigate('/todos')
                 })
                 .catch(error => console.log(error))
