@@ -1,3 +1,5 @@
+Project done with Udemy Course in28minutes to explore REACT front end.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
